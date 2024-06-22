@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>javascript Practice</title>
+    <link rel="stylesheet" href="practice-2.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="accordion-wrapper" id="accordions">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="delete-icon"><i class="fa-solid fa-xmark"></i></div>
+            <h3 class="title">Item 1</h3>
+            <div class="plus-icon">
+              <div class="plus open"></div>
+              <div class="minus"></div>
+            </div>
+          </div>
+          <div class="accordion-content-wrapper accordion-active">
+            <div class="accordion-content">
+              <input
+                type="text"
+                name="item-name"
+                placeholder="Enter item name"
+                class="item-name"
+              />
+              <input type="number" name="item-price" placeholder="Price" />
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <div class="delete-icon"><i class="fa-solid fa-xmark"></i></div>
+            <h3 class="title">Item 1</h3>
+            <div class="plus-icon">
+              <div class="plus"></div>
+              <div class="minus"></div>
+            </div>
+          </div>
+          <div class="accordion-content-wrapper">
+            <div class="accordion-content">
+              <input
+                type="text"
+                name="item-name"
+                placeholder="Enter item name"
+                class="item-name"
+              />
+              <input type="number" name="item-price" placeholder="Price" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button-wrapper">
+        <button class="result-button" id="get-result">Get Result</button>
+        <button class="add-button" id="add-button">Add item</button>
+      </div>
+      <div id="results">
+        </div>
+      </div>
+    </div>
+    <script src="practice-2.js"></script>
+  </body>
+</html>
