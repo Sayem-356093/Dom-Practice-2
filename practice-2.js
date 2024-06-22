@@ -2,27 +2,46 @@ let accordionArea = document.getElementById("accordions");
 let addButton = document.getElementById("add-button");
 let resultButton = document.getElementById("get-result");
 
-document
-  .querySelector(".accordion-content-wrapper")
-  .classList.add("accordion-active");
+document.querySelector(".accordion-content-wrapper").classList.add("accordion-active");
 
 accordionArea.addEventListener("click", (e) => {
   let accordionHeader = document.querySelectorAll(".accordion-header");
-  let accordionContent = document.querySelectorAll(
-    ".accordion-content-wrapper"
-  );
+  let accordionContent = document.querySelectorAll(".accordion-content-wrapper");
+  let deleteButton = document.querySelectorAll(".delete-icon");
   for (let j = 0; j < accordionHeader.length; j++) {
     if (e.target == accordionHeader[j]) {
       accordionContent[j].classList.toggle("accordion-active");
     }
+
+    if(e.target.closest(".delete-icon")==deleteButton[j]){
+      e.target.closest(".accordion-item").remove();
+    }
   }
 });
+
+accordionArea.addEventListener("keyup", function(e){
+  let titles = document.querySelectorAll(".title");
+  for(let x =0; x<titles.length;x++){
+    if (e.target.closest(`input[name="item-name"]`)==document.getElementsByName("item-name")[x]){
+      document.getElementsByName("item-name")[x].addEventListener("keyup", function () {
+        titles[x].innerText = document.getElementsByName("item-name")[x].value;
+      })
+    }
+    if(document.getElementsByName("item-name")[x].value == ""){
+      titles[x].innerText = `item ${x+1}`
+    }
+    
+  }
+
+})
+
 
 addButton.addEventListener("click", function () {
   accordionArea.insertAdjacentHTML(
     "beforeend",
     `<div class="accordion-item">
             <div class="accordion-header">
+            <div class="delete-icon"><i class="fa-solid fa-xmark"></i></div>
                 <h3 class="title">Item 1</h3>
                 <div class="plus-icon">
                     <div class="plus"></div>
