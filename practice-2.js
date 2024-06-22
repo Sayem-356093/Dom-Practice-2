@@ -2,8 +2,6 @@ let accordionArea = document.getElementById("accordions");
 let addButton = document.getElementById("add-button");
 let resultButton = document.getElementById("get-result");
 
-document.querySelector(".accordion-content-wrapper").classList.add("accordion-active");
-
 function updateTitle(){
   let titles = document.querySelectorAll(".title");
   for(let x =0; x<titles.length;x++){
@@ -20,10 +18,12 @@ updateTitle();
 accordionArea.addEventListener("click", (e) => {
   let accordionHeader = document.querySelectorAll(".accordion-header");
   let accordionContent = document.querySelectorAll(".accordion-content-wrapper");
+  let plus = document.querySelectorAll(".plus");
   let deleteButton = document.querySelectorAll(".delete-icon");
   for (let j = 0; j < accordionHeader.length; j++) {
-    if (e.target == accordionHeader[j]) {
+    if (e.target.closest(".accordion-header") == accordionHeader[j]) {
       accordionContent[j].classList.toggle("accordion-active");
+      plus[j].classList.toggle("open")
     }
 
     if(e.target.closest(".delete-icon")==deleteButton[j]){
@@ -55,7 +55,7 @@ addButton.addEventListener("click", function () {
             <div class="delete-icon"><i class="fa-solid fa-xmark"></i></div>
                 <h3 class="title">Item 1</h3>
                 <div class="plus-icon">
-                    <div class="plus"></div>
+                    <div class="plus open"></div>
                     <div class="minus"></div>
                 </div>
             </div>
@@ -71,7 +71,7 @@ addButton.addEventListener("click", function () {
 });
 
 
-function getInput(){
+function getOutput(){
     let inputProperties = document.getElementsByName("item-name");
     let inputValues = document.getElementsByName("item-price");
     let finalObject = {};
@@ -84,7 +84,7 @@ function getInput(){
 }
 
 function totalAmount(){
-  let obj = getInput();
+  let obj = getOutput();
   let sum = 0;
   for(let key in obj){
     sum = sum + Number(obj[key]);
@@ -93,8 +93,8 @@ function totalAmount(){
   return sum;
 }
 
-function displayInput(){
-  let result = getInput();
+function displayOutput(){
+  let result = getOutput();
   for(let key in result){
     let resultText = document.createElement("h3");
     resultText.innerHTML = `${key}: ${result[key]}`;
@@ -107,6 +107,5 @@ function displayInput(){
 }
 
 resultButton.addEventListener("click",  function(){
-  displayInput();
+  displayOutput();
 });
-
