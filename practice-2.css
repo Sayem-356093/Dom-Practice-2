@@ -43,7 +43,13 @@ body{
   width: 2px;
   height: 100%;
   background-color: #141414;
+  transition: transform 0.5s ease-in-out;
 }
+
+.plus.open{
+  transform: rotate(90deg);
+}
+
 .minus {
   width: 100%;
   height: 2px;
@@ -57,13 +63,15 @@ body{
 }
 
 .accordion-content-wrapper {
-  height: 0px;
+  max-height: 0px;
   overflow: hidden;
+  transition: max-height 1s ease;
 }
 
-.accordion-active {
-  height: auto;
+.accordion-content-wrapper.accordion-active {
+  max-height: 200px;
 }
+
 
 .accordion-content {
   display: grid;
